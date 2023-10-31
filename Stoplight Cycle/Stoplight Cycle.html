@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>Stoplight Cycle</title>
+
+        <script>
+            function changeLight(){
+                var x = document.getElementById("theLight").src;
+                // Get the source of the image
+                if (x.endsWith("light-red.png")) {
+                    document.getElementById("theLight").src = "light-adv.png";
+                }
+                /* If the source ends with light-red.png, change it to light-adv.png once 
+                the counter is done and then cycle through each in the else-if */
+                else if (x.endsWith("light-adv.png")) {
+                    document.getElementById("theLight").src = "light-green.png";
+                }
+                else if (x.endsWith("light-green.png")) {
+                    document.getElementById("theLight").src = "light-yellow.png";
+                }
+                else if (x.endsWith("light-yellow.png")) {
+                    document.getElementById("theLight").src = "light-red.png";
+                }
+            }
+
+            var theCounter = 3;
+            function startCountdown() {
+                if (theCounter == 0) { 
+                    theCounter = 3;
+                    changeLight(); 
+                    //call function to change color
+                }
+            document.getElementById('theCountdown').innerHTML = theCounter;
+            theCounter--;
+            // Decrement the counter for the timer to countdown
+            setTimeout(startCountdown,1000);
+            }
+        </script>
+
+    </head>
+    <body>
+            <img class="mainimage" src="light-red.png" alt="cross walk light" id="theLight"/> 
+            <br>   
+        <button onclick="startCountdown()">Start Countdown</button>
+        <div class="red" id="theCountdown"></div> 
+    </body>
+</html>

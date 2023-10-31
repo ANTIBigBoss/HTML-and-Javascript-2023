@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Food Order</title>
+
+        <script>
+            function sendOrder() {
+                var drinkTotal = 0; /* Setting a 0 value since we get the value from the radio button 
+                this way if the user doesn't select a drink it won't break or display an unexpected value */
+                if (document.getElementById("Drink1").checked) {
+                    drinkTotal = parseFloat(document.getElementById("Drink1").value);
+                    /* Using parseFloat as basically the same as parseInt from Assignment 2 & 5
+                       since we need to get an accurate decimal point value for the totals */
+                } else if (document.getElementById("Drink2").checked) {
+                    drinkTotal = parseFloat(document.getElementById("Drink2").value);
+                } else if (document.getElementById("Drink3").checked) {
+                    drinkTotal = parseFloat(document.getElementById("Drink3").value);
+                }/* drink1,2, and 3 are the unique ids for the radio buttons we then get the value from
+                    the radio button of the selected option */
+    
+                // Same logic as drinkTotal but for the entree
+                var entreeTotal = 0;
+                if (document.getElementById("Entree1").checked) {
+                    entreeTotal = parseFloat(document.getElementById("Entree1").value);
+                } else if (document.getElementById("Entree2").checked) {
+                    entreeTotal = parseFloat(document.getElementById("Entree2").value);
+                } else if (document.getElementById("Entree3").checked) {
+                    entreeTotal = parseFloat(document.getElementById("Entree3").value);
+                }
+    
+                // Same logic as drinkTotal and entreeTotal but for the fries
+                var friesTotal = 0;
+                if (document.getElementById("Fries1").checked) {
+                    friesTotal = parseFloat(document.getElementById("Fries1").value);
+                } else if (document.getElementById("Fries2").checked) {
+                    friesTotal = parseFloat(document.getElementById("Fries2").value);
+                } else if (document.getElementById("Fries3").checked) {
+                    friesTotal = parseFloat(document.getElementById("Fries3").value);
+                }
+    
+                // Checking if the poutine checkbox is added
+                var poutineTotal = 0;
+                if (document.getElementById("Poutine").checked) { // Simple check to see if the checkbox is checked
+                    poutineTotal = parseFloat(document.getElementById("Poutine").value); // If it is add the value to the total
+                }
+                
+                /* This part is a bit of a confusing way to do it but I couldn't think of a better way to do it without 
+                going out of learnt material 
+                
+                I start by adding all the individual totals to get the combined cost of the entire order */
+                var totalCost = drinkTotal + entreeTotal + friesTotal + poutineTotal;
+
+                // To get the dollar part of our price I convert the total to a int this gives a whole number before the decimal
+                var theDollarsTotal = parseInt(totalCost);
+
+                /* To determine the cents I subtract the dollar amount from the total and then move the decimal two places to the right
+                   This effectively gives us the cent value as a whole number. */
+                var centsValue = (totalCost - theDollarsTotal) * 100;
+
+                // Since the prices only ever have .00 or .50 as the decimal part I can determine the cent value using a simple if statement check
+                if (centsValue == 0) {
+                theCentTotal = "00";
+                } else {
+                theCentTotal = "50";
+                }
+
+                // With the dollar and cent values ready I combine them to form the total price in a format we'd see in real life
+                var priceDisplay = theDollarsTotal + "." + theCentTotal;
+
+                // Lastly, we display the computed price on the webpage for the user to see.
+                document.getElementById("checkTotal").innerHTML = "Your total is: $" + priceDisplay;
+
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <h1>Food Order Form</h1>
+        <form>
+            <h2>Select a drink size:</h2>
+            <input type = "radio" id = "Drink1" name = "roleDrink" value = "2.00" />Small ($2.00)<br/>
+            <input type = "radio" id = "Drink2" name = "roleDrink" value = "2.50" />Medium ($2.50)<br/>
+            <input type = "radio" id = "Drink3" name = "roleDrink" value = "3.50" />Large ($3.50)<br/>
+            <!-- After looking it up how forms worked a little more I found the best way to sort this 
+            was to link all the name values to "roleDrink" so that only one of each option for drinks,
+            entrees, and fries could be selected -->
+
+            <h2>Select an entree:</h2>
+            <input type = "radio" id = "Entree1" name = "roleEntree" value = "2.00" />Hot Dog ($2.00)<br/>
+            <input type = "radio" id = "Entree2" name = "roleEntree" value = "3.50" />Hamburger ($3.50)<br/>
+            <input type = "radio" id = "Entree3" name = "roleEntree" value = "5.00" />Bacon Cheeseburger ($5.00)<br/>
+
+            <h2>Select fries size:</h2>
+            <input type = "radio" id = "Fries1" name = "roleFries" value = "4.00" />Small ($4.00)<br/>
+            <input type = "radio" id = "Fries2" name = "roleFries" value = "5.00" />Medium ($5.00)<br/>
+            <input type = "radio" id = "Fries3" name = "roleFries" value = "6.00" />Large ($6.00)<br/>
+            <input type = "checkbox" id = "Poutine" value = "2.00" />Make it a poutine ($2.00 extra)<br/>
+            <button type="button" onclick="sendOrder()">Calculate Total</button>
+            <!-- Used a button instead of a submit since submit would generate a new form and display
+            the total for half a second before disappearing -->
+
+            <p id = "checkTotal"></p>
+        </form>
+
+    </body>
+</html>

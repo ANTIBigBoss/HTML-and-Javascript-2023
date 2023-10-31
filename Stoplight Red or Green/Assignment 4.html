@@ -1,0 +1,97 @@
+<html><head>
+    <meta charset="UTF-8">
+    <title>Mitchell Lauzon Assignment 4</title>
+    <style>
+        .stoplight-container {
+            /* I used a container to hold the image and text so I could center it on 
+            the page to solve my browser resizing issues and have the other 
+            classes relative inside of it*/
+            position: relative;
+            /* Making this relative ensures when we use absolute positioning on the
+            text it will be relative to this container */
+            width: 175px;
+            max-width: 100%;
+            margin: auto;
+        }
+        
+        .mainimage {
+            /* I tried to use inline at first as I wasn't sure which was best practice 
+            however resizing the browser caused issues with the text changing positions 
+            on the page. I wasn't sure if it was a text or image issue in terms of position changing
+            so I put it inside of the container here since it solve the issues positioning */
+            width: 100%;
+        }
+        
+        .red, .green {
+            /* I declared red and green in here since all these properties are the same 
+            within both colours and text*/
+            position: absolute;
+            font-size: 40px;
+            /*40 px felt like the best size for the text relative to the image size*/
+            left: 45%;
+            /* Left at 45% to center the text on the image */
+            top: 65%;
+            /* Has both red and green at the bottom stoplight */
+        }
+        
+        .red {
+            color: red;
+            /* Declaring the color red here so I can change it in the script*/
+        }
+        
+        .green {
+            color: green;
+        }
+        
+        body {
+            width: 538px;
+            /* Sets a fixed width for everything inside of the body */
+            margin: auto;
+            /* Centers the body on the page */
+        }
+    </style>
+
+    <script src="https://kit.fontawesome.com/0ce4f4c740.js" crossorigin="anonymous"></script>
+
+    <script>
+
+        function toggleWaitWalk() {
+            var x = document.getElementById("theCountdown").className;
+            if (x == "red") {
+                document.getElementById("theCountdown").className = "green";
+                document.getElementById("icon").className = "fa-solid fa-person-walking green";
+            } else {
+                document.getElementById("theCountdown").className = "red";
+                document.getElementById("icon").className = "fa-solid fa-hand red";
+            }
+        }   
+
+        var theCounter = 10;
+        function startCountdown() {
+            if (theCounter == 0) { 
+                /* Would prefer theCounter to be at -1 so that the 0 would show but 
+                wanted to make sure the function was identical to class example */
+                theCounter = 10;
+                toggleWaitWalk(); 
+                //call function to change color
+            }
+        document.getElementById('theCountdown').innerHTML = theCounter;
+        theCounter--; 
+        // Decrement the counter for the timer to countdown
+        setTimeout(startCountdown,1000); 
+        // Every second is 1000ms so we use this to calculate each time the counter counts down
+        }
+    </script>
+</head>
+
+<body onload="startCountdown()"> 
+    <!-- Call the startCountdown function as soon as the body loads which uses the 
+        toggleWaitWalk function  to change colours-->
+        <div class="stoplight-container">
+            <img class="mainimage" src="waitwalk.png" alt="cross walk light"/>
+            <i class="fa-solid fa-hand red" id="icon" style="top: 18%; left: 38%;" ></i>
+            <div class="red" id="theCountdown">3</div> 
+    <!-- Set the countdown to 10 and set the color to red it will dynamically change from 
+         the script to green once timer ends then back to red -->
+
+</body></html>

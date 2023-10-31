@@ -1,0 +1,121 @@
+<html>
+
+<head>
+
+<title>PIZZA TIME</title>
+
+<script>
+
+function pizzaTime() {
+
+var sizeTotal = 0; // Set as zero to get value from the radio
+
+//Check which radio is selected and parse the int from the value
+if (document.getElementById("size1").checked) {
+sizeTotal = parseInt(document.getElementById("size1").value);
+}
+
+else if (document.getElementById("size2").checked) {
+sizeTotal = parseInt(document.getElementById("size2").value);
+} 
+
+else if (document.getElementById("size3").checked) {
+sizeTotal = parseInt(document.getElementById("size3").value);
+} 
+
+else if (document.getElementById("size4").checked) {
+sizeTotal = parseInt(document.getElementById("size4").value);
+}
+
+var toppingsTotal = 0;
+
+if (document.getElementById("topping1").checked) {
+toppingsTotal += parseInt(document.getElementById("topping1").value);
+}
+
+// No need for else if since every checkbox could be checked
+if (document.getElementById("topping2").checked) {
+toppingsTotal += parseInt(document.getElementById("topping2").value);
+} 
+
+if (document.getElementById("topping3").checked) {
+toppingsTotal += parseInt(document.getElementById("topping3").value);
+}
+
+if (document.getElementById("topping4").checked) {
+toppingsTotal += parseInt(document.getElementById("topping4").value);
+}
+
+if (document.getElementById("topping5").checked) {
+toppingsTotal += parseInt(document.getElementById("topping5").value);
+}
+
+if (document.getElementById("topping6").checked) {
+toppingsTotal += parseInt(document.getElementById("topping6").value);
+} 
+
+if (document.getElementById("topping7").checked) {
+toppingsTotal += parseInt(document.getElementById("topping7").value);
+}
+
+if (document.getElementById("topping8").checked) {
+toppingsTotal += parseInt(document.getElementById("topping8").value);
+}
+
+var couponTotal = document.getElementById("coupon").value;
+
+
+if (couponTotal == "Discount" ||couponTotal == "discount") { 
+    // If the textbox reads discount or Discount we assign 2 for the value
+    couponTotal = 2;
+} else {
+    couponTotal = 0;
+}
+
+var finalTotal = sizeTotal + toppingsTotal - couponTotal;
+
+document.getElementById("grandTotal").innerHTML = "$" + finalTotal;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Pizza Builder</h1>
+
+<h2>Select your size</h2>
+
+<form>
+
+<input type = "radio" id = "size1" name = "roleSize" value = "5" /> Small $5
+<input type = "radio" id = "size2" name = "roleSize" value = "6" /> Medium $6
+<input type = "radio" id = "size3" name = "roleSize" value = "7" /> Large $7
+<input type = "radio" id = "size4" name = "roleSize" value = "8" /> Extra-Large $8
+
+
+<h2>Select Your Toppings</h2>
+
+<input type = "checkbox" id = "topping1" value = "1" /> Pepperoni $1 <br/>
+<input type = "checkbox" id = "topping2" value = "2" /> Bacon $2 <br/>
+<input type = "checkbox" id = "topping3" value = "2" /> Sasuage $2 <br/>
+<input type = "checkbox" id = "topping4" value = "1" /> Mushrooms $1 <br/>
+<input type = "checkbox" id = "topping5" value = "2" /> Extra Cheese $2 <br/>
+<input type = "checkbox" id = "topping6" value = "1" /> Onions $1 <br/>
+<input type = "checkbox" id = "topping7" value = "1" /> Olives $1 <br/>
+<input type = "checkbox" id = "topping8" value = "1" /> Green Pepper $1
+
+<h2> Do You Have A Coupon </h2>
+<input type = "text" id = "coupon">
+<button type ="button" onclick="pizzaTime()">Apply Coupon</button>
+
+<h2>Final Price</h2>
+<p id = "grandTotal"></p>
+
+</form>
+
+</body>
+
+</html>

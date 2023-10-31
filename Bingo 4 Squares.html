@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Bingo 4 Squares</title>
+
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 30px;
+      text-align: center;
+    }
+
+    p {
+      text-align: relative;
+    }
+
+    .red {
+      background-color: #ff0000;
+    }
+    </style>
+
+    <script>
+        // Function to change the bingo box to red using the td on click event
+        function changeToRed(theId) {
+            document.getElementById(theId).className = "red";
+            checkForWin();
+        }
+
+        function checkForWin() {
+        // Check if 4 corners are classname = red
+        if (document.getElementById("1").className == "red" && document.getElementById("5").className == "red" && document.getElementById("21").className == "red" && document.getElementById("25").className == "red") {
+            document.getElementById("fourSquares").innerHTML = "You got the 4 squares <BR> BINGO!";
+        }
+    }
+
+    </script>
+
+</head>
+
+<body>
+
+    <table>
+        <tr>
+          <td>
+            <div class="letter">B</div>  
+          </td>
+          <td>
+            <div class="letter">I</div>
+          </td>
+          <td>
+            <div class="letter">N</div>
+          </td>
+          <td>
+            <div class="letter">G</div>
+          </td>
+          <td>
+            <div class="letter">O</div>
+          </td>
+        </tr>
+
+        <tr>
+            <td id="1" onclick="changeToRed(1)">
+            <div class="number">1</div>
+          </td>
+          <td id="2" onclick="changeToRed(2)">
+            <div class="number">16</div>
+          </td>
+          <td id="3" onclick="changeToRed(3)">
+            <div class="number">31</div>
+          </td>
+          <td id="4" onclick="changeToRed(4)">
+            <div class="number">46</div>
+          </td>
+          <td id="5" onclick="changeToRed(5)">
+            <div class="number">61</div>
+          </td>
+        </tr>
+
+        <tr>
+            <td id="6" onclick="changeToRed(6)">
+            <div class="number">2</div>
+          </td>
+          <td id="7" onclick="changeToRed(7)">
+            <div class="number">17</div>
+          </td>
+          <td id="8" onclick="changeToRed(8)">
+            <div class="number">32</div>
+          </td>
+          <td id="9" onclick="changeToRed(9)">
+            <div class="number">47</div>
+          </td>
+          <td id="10" onclick="changeToRed(10)">
+            <div class="number">62</div>
+          </td>
+        </tr>
+
+        <tr>
+            <td id="11" onclick="changeToRed(11)">
+            <div class="number">3</div>
+          </td>
+          <td id="12" onclick="changeToRed(12)">
+            <div class="number">18</div>
+          </td>
+          <td id="13" onclick="changeToRed(13)">
+            <div class="number">FREE</div>
+          </td>
+          <td id="14" onclick="changeToRed(14)">
+            <div class="number">48</div>
+          </td>
+          <td id="15" onclick="changeToRed(15)">
+            <div class="number">63</div>
+          </td>
+        </tr>
+
+        <tr>
+            <td id="16" onclick="changeToRed(16)">
+            <div class="number">4</div>
+          </td>
+          <td id="17" onclick="changeToRed(17)">
+            <div class="number">19</div>
+          </td>
+          <td id="18" onclick="changeToRed(18)">
+            <div class="number">34</div>
+          </td>
+          <td id="19" onclick="changeToRed(19)">
+            <div class="number">49</div>
+          </td>
+          <td id="20" onclick="changeToRed(20)">
+            <div class="number">64</div>
+          </td>
+        </tr>
+
+        <tr>
+            <td id="21" onclick="changeToRed(21)">
+            <div class="number">5</div>
+          </td>
+          <td id="22" onclick="changeToRed(22)">
+            <div class="number">20</div>
+          </td>
+          <td id="23" onclick="changeToRed(23)">
+            <div class="number">35</div>
+          </td>
+          <td id="24" onclick="changeToRed(24)">
+            <div class="number">50</div>
+          </td>
+          <td id="25" onclick="changeToRed(25)">
+            <div class="number">65</div>
+          </td>
+<br>
+          <p id="fourSquares"></p>
+</body>
+
+</html>

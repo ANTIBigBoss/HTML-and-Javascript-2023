@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Math</title>
+    <script>
+        // Adding in comments to explain my thoughts to prove I understand the code
+        function addTheNumbers() {
+            var number1 = document.getElementById("Number1").value;
+            var number2 = document.getElementById("Number2").value;
+            // Removed out the line here for each function
+            var theAnswer = parseInt(number1) + parseInt(number2);
+            document.getElementById("addAnswer").value = theAnswer; // Had to switch to addAnswer from theAnswer
+        }
+
+        function subtractTheNumbers() {
+            var number1 = document.getElementById("Number3").value;
+            var number2 = document.getElementById("Number4").value;
+            // Removed out the line here for each function
+            var theAnswer = parseInt(number1) - parseInt(number2);
+            document.getElementById("subtractAnswer").value = theAnswer; // Had to switch to subtractAnswer from theAnswer
+        }
+
+        function multiplyTheNumbers() {
+            var number1 = document.getElementById("Number5").value;
+            var number2 = document.getElementById("Number6").value;
+            // Removed out the line here for each function
+            var theAnswer = parseInt(number1) * parseInt(number2);
+            document.getElementById("multiplyAnswer").value = theAnswer; // Had to switch to multiplyAnswer from theAnswer
+        }
+
+        function divideTheNumbers() {
+            var number1 = document.getElementById("Number7").value;
+            var number2 = document.getElementById("Number8").value;
+            // Removed out the line here for each function
+            var theAnswer = parseInt(number1) / parseInt(number2);
+            document.getElementById("divideAnswer").value = theAnswer; // Had to switch to divideAnswer from theAnswer
+        }
+        /* Changing all theAnswer to 
+        addAnswer/subtractAnswer/multiplyAnswer/divideAnswer solved my issue with forms
+        trying to add each math operation
+
+        switch statement removed from this part of the code*/
+    </script>
+</head>
+
+<body>
+    <h1>Do all the Methods with Numbers!</h1>
+
+    <h2>Addition</h2> <!-- h3 felt the most appropriate for each math operation -->
+    <form>
+        <input type="text" id="Number1" />
+        +
+        <input type="text" id="Number2" /> =
+        <input type="text" id="addAnswer"  /> 
+        <!-- Made add/sub/multiple/divide Answer to stop issue I had with each form trying to do addition -->
+        <input type="button" value="Add" onclick="addTheNumbers()" />
+        <!-- Buttons for each function help us to call the proper math operation -->
+    </form>
+
+    <h2>Subtraction</h2>
+    <form>
+        <input type="text" id="Number3" />
+        - <!-- Putting the operation here in the code helps the use understand 
+            which math operation will be performed for each -->
+        <input type="text" id="Number4" /> =
+        <input type="text" id="subtractAnswer"  />
+        <input type="button" value="Subtract" onclick="subtractTheNumbers()" />
+        <!-- The buttons also help the user as well to understand which
+        operation will be performed -->
+    </form>
+
+    <h2>Multiplication</h2>
+    <form>
+        <input type="text" id="Number5" />
+        *
+        <input type="text" id="Number6" /> =
+        <input type="text" id="multiplyAnswer"  />
+        <input type="button" value="Multiply" onclick="multiplyTheNumbers()" />
+    </form>
+
+    <h2>Division</h2>
+    <form>
+        <input type="text" id="Number7" />
+        /
+        <input type="text" id="Number8" /> = <input type="text" id="divideAnswer" />
+        <input type="button" value="Divide" onclick="divideTheNumbers()" />
+    </form>
+
+</body>
+</html>

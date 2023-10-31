@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>4 Square Cycle</title>
+
+<style>
+
+table {
+border-collapse: collapse;
+}
+
+th, td {
+border: 1px solid black;
+padding: 30px;
+text-align: center;
+}
+
+p {
+text-align: relative;
+}
+
+/* Declaring the style colours */
+
+.blue {
+background-color: Blue;
+}
+
+.red {
+background-color: Red;
+}
+
+.green {
+background-color: Green;
+}
+
+.yellow {
+background-color: Yellow;
+}
+
+</style>
+
+<script>
+// Blue, Red, Green, Yellow, Blue Sequence
+function changeTheSquares(theId){
+
+if (document.getElementById(theId).className == "blue") {
+document.getElementById(theId).className = "red";
+checkForWin();
+}
+
+else if (document.getElementById(theId).className == "red") {
+document.getElementById(theId).className = "green";
+checkForWin();
+}
+
+else if (document.getElementById(theId).className == "green") {
+document.getElementById(theId).className = "yellow";
+checkForWin();
+}
+
+else if (document.getElementById(theId).className == "yellow") {
+document.getElementById(theId).className = "blue";
+checkForWin();
+}
+}
+
+// All blue is the win condition
+function checkForWin(){
+if (document.getElementById("1").className == "blue" && document.getElementById("2").className == "blue" && document.getElementById("3").className == "blue" && document.getElementById("4").className == "blue"){
+document.getElementById("fourSquares").innerHTML = "All four squares are blue you win!";
+}
+else {
+document.getElementById("fourSquares").innerHTML = " ";
+}
+}
+
+</script>
+
+</head>
+
+<body>
+
+<table>
+
+<tr>
+<td id="1" onclick="changeTheSquares(1)" class="blue"></td>
+
+<td id="2" onclick="changeTheSquares(2)" class="red"></td>
+</tr>
+
+<tr>
+<td id="3" onclick="changeTheSquares(3)" class="green"></td>
+
+<td id="4" onclick="changeTheSquares(4)" class="yellow"></td>
+</tr>
+
+</table>
+<p id="fourSquares"></p>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta` charset="utf-8">
+        <title>Odd or Even</title>
+
+        <style>
+            .red {color: red;} /* Declaring in style sheet so the colour can be changed by the javascript */
+            .blue {color: blue;}
+        </style>
+
+        <script>
+            function checkOddOrEven() { //This function is the same as above but using an if to determine odd or even
+                var theNumber = document.getElementById("theNumber").value; // Variable to store the number entered by the user
+                if (theNumber % 2 == 0){ // The math to determine if the number is odd or even
+                    document.getElementById("theContent").innerHTML = "The number is even"; // This will print the number is even 1 time
+                    for (var i = 0; i < 4; i++) { // This loop will print out "The number is even" 4 times to bring the total to 5
+                        document.getElementById("theContent").innerHTML += "<br>The number is even"; // Line break to make it look nicer for each printed line
+                    }
+                }
+                else { // If the number isn't even it must be odd
+                    document.getElementById("theContent").innerHTML = "The number is odd";
+                    for (var i = 0; i < 4; i++) {
+                        document.getElementById("theContent").innerHTML += "<br>The number is odd";
+                    }
+                }
+                
+                switch (document.getElementById("theNumber").value % 2) { // Unsure if I need to declare the math of odd or even again
+                    case 0: // If the number is even
+                        document.getElementById("theContent").className = "blue"; // Changes theContent colour to blue
+                        break;
+                    case 1: // If the number is odd
+                        document.getElementById("theContent").className = "red"; // Changes theContent colour to red
+                        break;
+            }            
+        }
+        </script>
+
+    </head>
+
+    <body>
+<form>
+    <input type="text" id="theNumber" /> <!-- Text box for the user to enter in a number for theNumber variable -->
+    <input type="button" onclick="checkOddOrEven()" value="Check the number" /> <!-- Button to run the function -->
+</form>
+<p id = "theContent"></p> <!-- Paragraph to print the results of the function -->
+    </body>
+</html>
